@@ -9,7 +9,7 @@ on the opposing side.
 Players use the paddles to hit a ball back and forth.
  - Source: https://en.wikipedia.org/wiki/Pong#:~:text=Pong%20is%20a%20two-dimensional,a%20ball%20back%20and%20forth.
 
-ToDo:
+Approach:
  - assets:
 	- create field with edges
 	- create paddles
