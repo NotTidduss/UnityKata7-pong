@@ -3,12 +3,9 @@ using UnityEngine;
 
 public class Pong_Ball : MonoBehaviour
 {
-    [Header("Ball Settings")]
-    [SerializeField] private float ballMovementX = 0.015f;
-    [SerializeField] private float ballMovementYMin = 0.005f;
-    [SerializeField] private float ballMovementYMax = 0.04f;
+    [Header ("Master Reference")]
+    public Pong_Master master;
 
-    private Pong_Master master_ref;
     private Vector3 ballMovement;
     private float currentMovementX;
     private float currentMovementY;
@@ -21,12 +18,11 @@ public class Pong_Ball : MonoBehaviour
         start coroutine for moving.
     */
     void Start() {
-        master_ref = GameObject.Find("Master").GetComponent<Pong_Master>();
+        // prepare private variables: randomize Y movement, change starting position based on current winner
+        ballMovement.x = master.sys.ballMovementX;
+        ballMovement.y = Random.Range(master.sys.ballMovementYMin, master.sys.ballMovementYMax);
 
-        ballMovement.x = ballMovementX;
-        ballMovement.y = Random.Range(ballMovementYMin, ballMovementYMax);
-
-        if (master_ref.getCurrentWinner() == 1) {
+        if (master.getCurrentWinner() == 1) {
             transform.position = new Vector2(-transform.position.x, transform.position.y);
             ballMovement = -ballMovement;
         } 
@@ -72,7 +68,7 @@ public class Pong_Ball : MonoBehaviour
                 ballMovement.y = -currentMovementY;
                 break;
             case "Wall":
-                master_ref.finishMatch(getWinner(collision.gameObject.name.ToLower()));
+                master.finishMatch(getWinner(collision.gameObject.name.ToLower()));
                 break;
         }
     }

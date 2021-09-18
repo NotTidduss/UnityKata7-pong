@@ -9,29 +9,12 @@ on the opposing side.
 Players use the paddles to hit a ball back and forth.
  - Source: https://en.wikipedia.org/wiki/Pong#:~:text=Pong%20is%20a%20two-dimensional,a%20ball%20back%20and%20forth.
 
-Approach:
- - assets:
-	- create field with edges
-	- create paddles
-	- create ball
- - scripts:
-	- master script, that keeps track of the game
-		- input management
-		- score system
-		- determine when match is over
-			- restart match
-	- paddle behavior
-		- collision with ball
-	- ball behavior
-		- movement
+Current features:
+ * basic local coop pong game
 
-Flow:
- 1) start game
- 2) play
- 3) win / lose
- 4) next match
- 5) steps 2-4
- 
-Goal:
- - clean code: better documentation
- - functional pong game (no ai)
+ToDo:
+- implement ui the right way
+- fix paddle collision bug
+- add some text when is game is paused
+- fix lighting
+- add some nice fx
